@@ -17,6 +17,7 @@
 		EF794B5F2D7C23EF00256B79 /* NumberFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF794B5E2D7C23EF00256B79 /* NumberFormatter+Ext.swift */; };
 		EF794B612D7C292400256B79 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF794B602D7C292400256B79 /* MovieDetailView.swift */; };
 		EF794B702D7C2B6700256B79 /* MovieRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF794B6F2D7C2B6700256B79 /* MovieRowView.swift */; };
+		EF794B722D7C52E900256B79 /* AddReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF794B712D7C52E900256B79 /* AddReviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		EF794B5E2D7C23EF00256B79 /* NumberFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Ext.swift"; sourceTree = "<group>"; };
 		EF794B602D7C292400256B79 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		EF794B6F2D7C2B6700256B79 /* MovieRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRowView.swift; sourceTree = "<group>"; };
+		EF794B712D7C52E900256B79 /* AddReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				EF794B592D7C1AB800256B79 /* AddEditMovieView.swift */,
 				EF794B6F2D7C2B6700256B79 /* MovieRowView.swift */,
 				EF794B602D7C292400256B79 /* MovieDetailView.swift */,
+				EF794B712D7C52E900256B79 /* AddReviewView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				EF794B5D2D7C1B6D00256B79 /* String+Ext.swift in Sources */,
 				EF794B572D7C193500256B79 /* Movie.swift in Sources */,
 				EF794B612D7C292400256B79 /* MovieDetailView.swift in Sources */,
+				EF794B722D7C52E900256B79 /* AddReviewView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
