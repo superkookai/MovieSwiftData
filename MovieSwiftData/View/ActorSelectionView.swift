@@ -16,7 +16,8 @@ struct ActorSelectionView: View {
     var body: some View {
         List(actors) { actor in
             HStack {
-                Image(systemName: selectedActors.contains(actor) ? "checkmark.square" : "square")
+                Image(systemName: selectedActors.contains(actor) ? "checkmark.square.fill" : "square")
+                    .foregroundStyle(selectedActors.contains(actor) ? .green : .black)
                     .onTapGesture {
                         if !selectedActors.contains(actor) {
                             selectedActors.insert(actor)

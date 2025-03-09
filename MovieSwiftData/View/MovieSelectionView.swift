@@ -15,7 +15,8 @@ struct MovieSelectionView: View {
     var body: some View {
         List(movies) { movie in
             HStack {
-                Image(systemName: selectedMovies.contains(movie) ? "checkmark.square" : "square")
+                Image(systemName: selectedMovies.contains(movie) ? "checkmark.square.fill" : "square")
+                    .foregroundStyle(selectedMovies.contains(movie) ? .green : .black)
                     .onTapGesture {
                         if !selectedMovies.contains(movie) {
                             selectedMovies.insert(movie)

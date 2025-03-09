@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ActorDetailView: View {
-    let actor: Actor
+    var actor: Actor
     @State private var selectedMovies: Set<Movie> = []
     @Environment(\.modelContext) var context
     
@@ -26,27 +26,19 @@ struct ActorDetailView: View {
             }
             
             VStack(alignment: .leading) {
-                HStack {
-                    Text("Select Movies")
-                        .fontWeight(.bold)
-                    
-                    Spacer()
-                    
-                    Button {
-                        actor.movies = Array(selectedMovies)
-//                        context.insert(actor)
-                        do {
-                            try context.save()
-                        } catch {
-                            print("Error adding movies to actor: \(error)")
-                        }
-                    } label: {
-                        Text("Update")
-                    }
-                }
-                .padding(.horizontal)
+                Text("Select Movies")
+                    .fontWeight(.bold)
+                    .padding(.horizontal)
                 
                 MovieSelectionView(selectedMovies: $selectedMovies)
+            }
+        }
+        .onChange(of: selectedMovies) {
+            actor.movies = Array(selectedMovies)
+            do {
+                try context.save()
+            } catch {
+                print("Error adding movies to actor: \(error)")
             }
         }
         .onAppear {
@@ -62,12 +54,4 @@ struct ActorDetailView: View {
     }
 }
 
-//.onChange(of: selectedMovies) {
-//    actor.movies = Array(selectedMovies)
-//    context.insert(actor)
-//    do {
-//        try context.save()
-//    } catch {
-//        print("Error adding movies to actor: \(error)")
-//    }
-//}
+
