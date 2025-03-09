@@ -36,6 +36,18 @@ struct ActorsView: View {
                         NavigationLink(value: actor) {
                             ActorRowView(actor: actor)
                         }
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                context.delete(actor)
+                                do {
+                                    try context.save()
+                                } catch {
+                                    print("Error deleting actor: \(error)")
+                                }
+                            } label: {
+                                Image(systemName: "trash")
+                            }
+                        }
                     }
                     .listStyle(.plain)
                 } else {

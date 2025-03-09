@@ -21,7 +21,7 @@ class Movie {
     var reviews: [Review]?
     
     //Many-to-Many
-    @Relationship(deleteRule: .noAction, inverse: \Actor.movies)
+    @Relationship(deleteRule: .nullify, inverse: \Actor.movies)
     var actors: [Actor] = []
     
     init(title: String, year: Int) {
