@@ -29,6 +29,8 @@ struct ContentView: View {
     @Query(sort: \Movie.title, order: .reverse) private var movies: [Movie]
     @Environment(\.modelContext) var context
     
+    @State private var showActorsView: Bool = false
+    
     var body: some View {
         NavigationStack {
             List(movies) { movie in
@@ -62,10 +64,20 @@ struct ContentView: View {
                 MovieDetailView(movie: movie)
             })
             .toolbar {
-                Button {
-                    sheetAction = .add
-                } label: {
-                    Image(systemName: "plus.circle.fill")
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        sheetAction = .add
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showActorsView.toggle()
+                    } label: {
+                        Text("Actors")
+                    }
                 }
             }
         }
@@ -76,6 +88,9 @@ struct ContentView: View {
             case .edit(let movie):
                 AddEditMovieView(movieToEdit: movie)
             }
+        }
+        .fullScreenCover(isPresented: $showActorsView) {
+            ActorsView()
         }
     }
 }

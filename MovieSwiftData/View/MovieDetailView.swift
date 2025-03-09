@@ -21,6 +21,13 @@ struct MovieDetailView: View {
                 .font(.largeTitle.weight(.heavy))
             Text(movie.year.description)
                 .font(.title2)
+            
+            VStack(alignment: .leading) {
+                Text("Actors")
+                ActorsForMovieView(movie: movie)
+            }
+            .padding(.horizontal)
+            
             Text("Reviews")
                 .font(.title)
             
@@ -85,4 +92,23 @@ struct ReviewRowView: View {
 
 #Preview("Review Row") {
     ReviewRowView(review: Review(subject: "Awesome!", body: "I love Superman in this version!"))
+}
+
+struct ActorsForMovieView: View {
+    let movie: Movie
+    
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(movie.actors) { actor in
+                    Text(actor.name.capitalized)
+                        .font(.caption)
+                        .padding()
+                        .background(.ultraThinMaterial)
+                        .clipShape(.capsule)
+                }
+            }
+        }
+        .frame(height: 50)
+    }
 }
