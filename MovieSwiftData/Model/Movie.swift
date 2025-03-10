@@ -18,7 +18,7 @@ class Movie {
     //One-to-Many
     //delete cascade means when delete Movie will delete all reviews related to that Movie
     @Relationship(deleteRule: .cascade, inverse: \Review.movie)
-    var reviews: [Review]?
+    var reviews: [Review] = []
     
     //Many-to-Many
     @Relationship(deleteRule: .nullify, inverse: \Actor.movies)
@@ -27,6 +27,15 @@ class Movie {
     init(title: String, year: Int) {
         self.title = title
         self.year = year
+    }
+    
+    //Computed properties not persist
+    var reviewCount: Int {
+        reviews.count
+    }
+    
+    var actorCount: Int {
+        actors.count
     }
 }
 

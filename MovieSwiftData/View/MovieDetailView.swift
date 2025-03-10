@@ -31,8 +31,8 @@ struct MovieDetailView: View {
             Text("Reviews")
                 .font(.title)
             
-            if let reviews = movie.reviews, !reviews.isEmpty {
-                List(reviews) { review in
+            if !movie.reviews.isEmpty {
+                List(movie.reviews) { review in
                     ReviewRowView(review: review)
                         .swipeActions {
                             Button(role: .destructive) {

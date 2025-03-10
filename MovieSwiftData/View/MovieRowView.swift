@@ -11,10 +11,19 @@ struct MovieRowView: View {
     let movie: Movie
     
     var body: some View {
-        HStack {
-            Text(movie.title)
-            Spacer()
-            Text(String(movie.year))
+        VStack {
+            HStack {
+                Text(movie.title)
+                Spacer()
+                Text(String(movie.year))
+            }
+            
+            HStack {
+                Text("Actors: \(movie.actorCount)")
+                Text("Reviews: \(movie.reviewCount)")
+                Spacer()
+            }
+            .foregroundStyle(.secondary)
         }
     }
 }

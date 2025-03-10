@@ -13,6 +13,7 @@ import SwiftData
 enum SheetAction: Identifiable {
     case add
     case edit(Movie)
+    case showFilter
     
     var id: Int {
         switch self {
@@ -20,66 +21,55 @@ enum SheetAction: Identifiable {
                 return 1
             case .edit(_):
                 return 2
+            case .showFilter:
+                return 3
         }
     }
 }
 
 struct ContentView: View {
-    @State private var sheetAction: SheetAction?
-    @Query(sort: \Movie.title, order: .reverse) private var movies: [Movie]
+    
+//    @Query(filter: #Predicate<Movie> {$0.year < 2000}, sort: \Movie.title) private var movies: [Movie]
+    
     @Environment(\.modelContext) var context
     
+    @State private var sheetAction: SheetAction?
     @State private var showActorsView: Bool = false
+    @State private var filterOption: FilterOption = .none
     
     var body: some View {
         NavigationStack {
-            List(movies) { movie in
-                NavigationLink(value: movie) {
-                    MovieRowView(movie: movie)
-                }
-                .swipeActions {
-                    Button(role: .destructive) {
-                        context.delete(movie)
-                        do {
-                            try context.save()
-                        } catch {
-                            print("Error deleting: \(error)")
+            MovieListView(filterOption: filterOption, sheetAction: $sheetAction)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        HStack(spacing: 0) {
+                            Button {
+                                sheetAction = .add
+                            } label: {
+                                Image(systemName: "plus.circle.fill")
+                            }
+                            
+                            Button {
+                                if filterOption == .none {
+                                    sheetAction = .showFilter
+                                } else {
+                                    filterOption = .none
+                                }
+                            } label: {
+                                Image(systemName: "line.3.horizontal.decrease.circle")
+                                    .foregroundStyle(filterOption == .none ? .blue : .red)
+                            }
                         }
-                    } label: {
-                        Image(systemName: "trash")
                     }
                     
-                    Button {
-                        sheetAction = .edit(movie)
-                    } label: {
-                        Image(systemName: "pencil.circle")
-                    }
-                    
-                }
-            }
-            .environment(\.defaultMinListRowHeight, 70)
-            .navigationTitle("Movies")
-            .listStyle(.plain)
-            .navigationDestination(for: Movie.self, destination: { movie in
-                MovieDetailView(movie: movie)
-            })
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        sheetAction = .add
-                    } label: {
-                        Image(systemName: "plus.circle.fill")
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            showActorsView.toggle()
+                        } label: {
+                            Text("Actors")
+                        }
                     }
                 }
-                
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        showActorsView.toggle()
-                    } label: {
-                        Text("Actors")
-                    }
-                }
-            }
         }
         .sheet(item: $sheetAction) { action in
             switch action {
@@ -87,6 +77,8 @@ struct ContentView: View {
                 AddEditMovieView()
             case .edit(let movie):
                 AddEditMovieView(movieToEdit: movie)
+            case .showFilter:
+                FilterView(filterOption: $filterOption)
             }
         }
         .fullScreenCover(isPresented: $showActorsView) {

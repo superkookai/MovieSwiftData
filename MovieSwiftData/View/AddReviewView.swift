@@ -25,7 +25,7 @@ struct AddReviewView: View {
         let review = Review(subject: subject, body: description)
         review.movie = movie
         context.insert(review)
-        movie.reviews?.append(review)
+        movie.reviews.append(review)
         do {
             try context.save()
         } catch {
