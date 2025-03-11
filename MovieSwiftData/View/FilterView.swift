@@ -10,6 +10,7 @@ import SwiftUI
 enum FilterOption: Equatable {
     case title(String)
     case reviewCount(Int)
+    case genre(Genre)
     case none
 }
 
@@ -19,6 +20,7 @@ struct FilterView: View {
     
     @State private var movieTitle: String = ""
     @State private var numOfReviews: String = ""
+    @State private var genre: Genre = .none
     
     var body: some View {
         NavigationStack {
@@ -51,6 +53,18 @@ struct FilterView: View {
                             
                             dismiss()
                         }
+                }
+                
+                Section("By Genre") {
+                    Picker("Select Genre", selection: $genre) {
+                        ForEach(Genre.allCases) { genre in
+                            Text(genre.title).tag(genre)
+                        }
+                    }
+                    .onChange(of: genre) {
+                        filterOption = .genre(genre)
+                        dismiss()
+                    }
                 }
             }
             .navigationTitle("Filter View")

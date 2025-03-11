@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  MovieSwiftData
 //
 //  Created by Weerawut Chaiyasomboon on 08/03/2568.
@@ -27,7 +27,7 @@ enum SheetAction: Identifiable {
     }
 }
 
-struct ContentView: View {
+struct MainView: View {
     
 //    @Query(filter: #Predicate<Movie> {$0.year < 2000}, sort: \Movie.title) private var movies: [Movie]
     
@@ -88,6 +88,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(for: Movie.self)
+    MainView()
+        .modelContainer(ModelPreview.previewContainer)
 }

@@ -89,7 +89,7 @@ struct ActorsView: View {
 
 #Preview {
     ActorsView()
-        .modelContainer(for: Actor.self)
+        .modelContainer(ModelPreview.previewContainer)
 }
 
 struct ActorRowView: View {

@@ -73,5 +73,5 @@ struct AddReviewView: View {
 
 #Preview {
     AddReviewView(movie: Movie(title: "Wonder Woman", year: 1999))
-        .modelContainer(for: Movie.self)
+        .modelContainer(ModelPreview.previewContainer)
 }

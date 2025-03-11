@@ -33,5 +33,5 @@ struct ActorSelectionView: View {
 
 #Preview {
     ActorSelectionView(selectedActors: .constant([]))
-        .modelContainer(for: Actor.self)
+        .modelContainer(ModelPreview.previewContainer)
 }

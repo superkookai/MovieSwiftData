@@ -13,6 +13,7 @@ struct AddEditMovieView: View {
     @State private var title: String = ""
     @State private var year: Int?
     @State private var selectedActors: Set<Actor> = []
+    @State private var genre: Genre = .action
     
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
@@ -34,8 +35,9 @@ struct AddEditMovieView: View {
                 actor.movies.append(movieToEdit)
                 context.insert(actor)
             }
+            movieToEdit.genreId = self.genre.id
         } else {
-            let movie = Movie(title: self.title, year: self.year!)
+            let movie = Movie(title: self.title, year: self.year!, genre: genre)
             movie.actors = Array(self.selectedActors)
             selectedActors.forEach { actor in
                 actor.movies.append(movie)
@@ -62,6 +64,13 @@ struct AddEditMovieView: View {
                 TextField("Year", value: $year, format: .number)
                     .autocorrectionDisabled()
                     .keyboardType(.numberPad)
+                
+                Picker("Select Genre", selection: $genre) {
+                    ForEach(Genre.allCases) { genre in
+                        Text(genre.title)
+                            .tag(genre)
+                    }
+                }
                 
                 Section("Select actors") {
                     ActorSelectionView(selectedActors: $selectedActors)
@@ -94,6 +103,7 @@ struct AddEditMovieView: View {
                     self.title = movieToEdit.title
                     self.year = movieToEdit.year
                     self.selectedActors = Set(movieToEdit.actors)
+                    self.genre = movieToEdit.genre
                 }
             }
         }
@@ -102,5 +112,5 @@ struct AddEditMovieView: View {
 
 #Preview {
     AddEditMovieView()
-        .modelContainer(for: Movie.self)
+        .modelContainer(ModelPreview.previewContainer)
 }

@@ -32,5 +32,5 @@ struct MovieSelectionView: View {
 
 #Preview {
     MovieSelectionView(selectedMovies: .constant([]))
-        .modelContainer(for: Movie.self)
+        .modelContainer(ModelPreview.previewContainer)
 }

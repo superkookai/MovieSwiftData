@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF5DB64A2D7FE2E50060E328 /* ModelPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5DB6492D7FE2E50060E328 /* ModelPreview.swift */; };
 		EF794B512D7C190500256B79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF794B4B2D7C190500256B79 /* Preview Assets.xcassets */; };
 		EF794B522D7C190500256B79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF794B4D2D7C190500256B79 /* Assets.xcassets */; };
 		EF794B542D7C190500256B79 /* MovieSwiftDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF794B4F2D7C190500256B79 /* MovieSwiftDataApp.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF5DB6492D7FE2E50060E328 /* ModelPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPreview.swift; sourceTree = "<group>"; };
 		EF794B3A2D7C18FE00256B79 /* MovieSwiftData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieSwiftData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF794B4B2D7C190500256B79 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EF794B4D2D7C190500256B79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				EF794B562D7C193500256B79 /* Movie.swift */,
+				EF5DB6492D7FE2E50060E328 /* ModelPreview.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF5DB64A2D7FE2E50060E328 /* ModelPreview.swift in Sources */,
 				EF794B5F2D7C23EF00256B79 /* NumberFormatter+Ext.swift in Sources */,
 				EF794B542D7C190500256B79 /* MovieSwiftDataApp.swift in Sources */,
 				EF794B5D2D7C1B6D00256B79 /* String+Ext.swift in Sources */,

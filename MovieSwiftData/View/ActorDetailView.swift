@@ -50,7 +50,7 @@ struct ActorDetailView: View {
 #Preview {
     NavigationStack {
         ActorDetailView(actor: Actor(name: "Galgadot"))
-            .modelContainer(for: Actor.self)
+            .modelContainer(ModelPreview.previewContainer)
     }
 }
 

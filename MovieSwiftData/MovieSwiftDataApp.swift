@@ -11,7 +11,7 @@ import SwiftUI
 struct MovieSwiftDataApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
                 .modelContainer(for: [Movie.self, Review.self, Actor.self])
         }
     }

@@ -26,7 +26,10 @@ struct MovieListView: View {
             _movies = Query(filter: #Predicate<Movie> { $0.title.contains(movieTitle)})
         case .reviewCount(let num):
             _movies = Query(filter: #Predicate<Movie> { $0.reviews.count >= num})
-            //in #Predicate can use only properties that persist cannot use Transient properties (Properties that not persist, eg. Computed Properties
+        case .genre(let genre):
+            _movies = Query(filter: #Predicate<Movie>{ $0.genreId == genre.id})
+            
+//in #Predicate can use only properties that persist cannot use Transient properties (Properties that not persist, eg. Computed Properties
         }
     }
     
@@ -68,6 +71,6 @@ struct MovieListView: View {
 #Preview {
     NavigationStack {
         MovieListView(filterOption: .none, sheetAction: .constant(.add))
-            .modelContainer(for: Movie.self)
+            .modelContainer(ModelPreview.previewContainer)
     }
 }

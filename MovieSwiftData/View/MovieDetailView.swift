@@ -70,7 +70,7 @@ struct MovieDetailView: View {
 #Preview {
     NavigationStack {
         MovieDetailView(movie: Movie(title: "Superman", year: 1999))
-            .modelContainer(for: Movie.self)
+            .modelContainer(ModelPreview.previewContainer)
     }
 }
 

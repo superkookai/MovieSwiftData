@@ -19,6 +19,7 @@ struct MovieRowView: View {
             }
             
             HStack {
+                Text(movie.genre.title)
                 Text("Actors: \(movie.actorCount)")
                 Text("Reviews: \(movie.reviewCount)")
                 Spacer()
