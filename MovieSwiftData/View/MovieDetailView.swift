@@ -81,7 +81,11 @@ struct ReviewRowView: View {
         VStack(alignment: .leading) {
             Text(review.subject)
                 .font(.title2)
+            
             Text(review.body)
+            
+            Text(review.movie?.title ?? "No Movie")
+                .foregroundStyle(.secondary)
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)

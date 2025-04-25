@@ -36,6 +36,7 @@ struct MainView: View {
     @State private var sheetAction: SheetAction?
     @State private var showActorsView: Bool = false
     @State private var filterOption: FilterOption = .none
+    @State private var showReviews: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -63,11 +64,21 @@ struct MainView: View {
                     }
                     
                     ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            showActorsView.toggle()
-                        } label: {
-                            Text("Actors")
+                        HStack {
+                            Button {
+                                showActorsView.toggle()
+                            } label: {
+                                Text("Actors")
+                            }
+                            
+                            Button {
+                                showReviews = true
+                            } label: {
+                                Text("Reviews")
+                                    .foregroundStyle(.red)
+                            }
                         }
+
                     }
                 }
         }
@@ -83,6 +94,9 @@ struct MainView: View {
         }
         .fullScreenCover(isPresented: $showActorsView) {
             ActorsView()
+        }
+        .fullScreenCover(isPresented: $showReviews) {
+            ReviewListView()
         }
     }
 }
